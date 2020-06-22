@@ -1,9 +1,10 @@
-const container = document.getElementById('container')
+var container = document.querySelector('#container')
 
-const url = '';
-// construct a url which will return a list of movies from the tmdb api
-// Youll need to create an account with tmbd and create an api key,
-// youll also need to find the correct api endpoint in the documentation.
+var url = '';
+// Construct a URL which will return a list of the popular movies from the TMDB api
+// You'll need to find the correct api endpoint in the documentation
+//    You can find it at https://developers.themoviedb.org/3
+// You'll also need to have a valid api key
 
 ajax({url: url}, processData);
 
@@ -11,6 +12,7 @@ function processData(result, data){
   var movieData = JSON.parse(data);
 	console.log('IF YOU SEE DATA YOUVE COMPLETED TASK 1', movieData)
 	// in your console you will see the data returned from the api
+
 	//TASK
 	//Pass just the results through to the loopResults function below
 	//( just the array of 20 results, not the whole object response being displayed in the console)
@@ -25,20 +27,22 @@ function renderItem(item){
 	//this function has already been written for you
 	console.log('IF YOU SEE THIS PRINTED 20 TIMES IN A ROW YOU HAVE COMPLETED THE SECOND TASK')
 	//create div and give it a class we can refer to in css
-	const div = document.createElement('DIV')
+	var div = document.createElement('div')
 	div.className = 'itemContainer'
 	// create image and put it inside the div
-	const img = document.createElement('IMG')
+	var img = document.createElement('img')
 	img.src = 'http://image.tmdb.org/t/p/w185' + item.poster_path
 	div.appendChild(img)
 	//create title and put it inside the div
-	const title = document.createElement('H4')
-	title.innerHTML = item.title 
+	var title = document.createElement('h4')
+  title.appendChild(document.createTextNode(item.title));
 	div.appendChild(title)
 	//put the whole div in the container
 	container.appendChild(div)
 }
 
+// Once you've got it working, you can try to do some of these extra tasks
+//
 //TASK
 // change the URL we are using to call the api so the response only includes comedy movies
 // https://developers.themoviedb.org/3/discover/movie-discover 
